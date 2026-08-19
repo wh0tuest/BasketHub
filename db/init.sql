@@ -1,0 +1,40 @@
+PRAGMA foreign_keys = ON;
+
+CREATE TABLE IF NOT EXISTS users (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ email TEXT UNIQUE NOT NULL,
+ password TEXT NOT NULL,
+ role TEXT CHECK(role IN ('admin','user','guest')) DEFAULT 'user'
+);
+CREATE TABLE IF NOT EXISTS tournaments (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ location TEXT NOT NULL,
+ start_date TEXT NOT NULL,
+ is_active INTEGER DEFAULT 1
+);
+CREATE TABLE IF NOT EXISTS teams (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ city TEXT NOT NULL,
+ owner_id INTEGER UNIQUE,
+ FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS players (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ name TEXT NOT NULL,
+ position TEXT NOT NULL,
+ age INTEGER,
+ team_id INTEGER NOT NULL,
+ FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS applications (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ team_id INTEGER NOT NULL,
+ tournament_id INTEGER NOT NULL,
+ status TEXT CHECK(status IN ('pending','accepted','rejected')) DEFAULT 'pending',
+ applied_at TEXT DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE,
+ FOREIGN KEY (tournament_id) REFERENCES tournaments(id) ON DELETE CASCADE,
+ UNIQUE (team_id, tournament_id)
+);

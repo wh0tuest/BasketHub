@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - BasketHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">🏀 Basket<span>Hub</span></div>
+    <nav>
+        <span id="user-info" class="user-info-status"></span>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html" id="dashboard-link" class="nav-link-hidden">Dashboard</a>
+        <a href="login.html" id="login-btn" class="nav-link">Login</a>
+        <a href="register.html" id="register-btn" class="btn">Register</a>
+        <button id="logout-btn" onclick="logout()" class="btn-logout-nav">Logout</button>
+    </nav>
+</header>
+
+<main class="container">
+<h1>Panel użytkownika</h1>
+
+    <section id="admin-section" class="admin-panel">
+        <h3>⚡ Panel Administratora: Dodaj turniej</h3>
+        <div class="form-group row">
+            <input id="name" placeholder="Nazwa turnieju">
+            <input id="location" placeholder="Miasto">
+            <input id="date" type="date">
+            <button class="btn-primary" onclick="addTournament()">Dodaj Turniej</button>
+        </div>
+    </section>
+
+    <section id="user-section" class="team-creation-panel">
+        <h3>🏀 Stwórz swoją drużynę</h3>
+        <p class="helper-text">Możesz posiadać tylko jedną drużynę в systemie.</p>
+        <div class="form-group row">
+            <input id="team-name" placeholder="Nazwa drużyny">
+            <input id="team-city" placeholder="Miasto">
+            <button class="btn-primary" onclick="addTeam()">Stwórz Drużynę</button>
+        </div>
+    </section>
+
+    <div id="my-team-details"></div>
+
+    <section id="manage-players-section" class="players-management-panel">
+        <div class="panel-header">
+            <h3>👥 Zarządzanie Składem</h3>
+            <span id="player-count-info" class="player-counter">Skład: 0 / 5</span>
+        </div>
+
+        <div class="form-group row">
+            <input type="text" id="player-name-input" placeholder="Imię i nazwisko" class="flex-2">
+            <select id="player-position-input" class="flex-1">
+                <option value="PG">Rozgrywający (PG)</option>
+                <option value="SG">Rzucający obrońca (SG)</option>
+                <option value="SF">Niski skrzydłowy (SF)</option>
+                <option value="PF">Silny skrzydłowy (PF)</option>
+                <option value="C">Środkowy (C)</option>
+            </select>
+            <button class="btn-primary" onclick="addPlayerToTeam()">Dodaj Gracza</button>
+        </div>
+
+        <ul id="current-players-list" class="players-list">
+        </ul>
+
+    <section class="tournaments-section">
+        <h3>🏆 Dostępne Turnieje</h3>
+        <ul id="list" class="tournament-list"></ul>
+        <div id="pagination" class="pagination-container"></div>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

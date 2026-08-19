@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Basketball Tournaments - BasketLand</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">🏀 Basket<span>Land</span></div>
+    <nav>
+        <span id="user-info" class="user-info-status"></span>
+        <a href="dashboard.html" id="dashboard-link" class="nav-link-hidden">Dashboard</a>
+
+        <a href="login.html" id="login-btn" class="nav-link">Login</a>
+        <a href="register.html" id="register-btn" class="btn-register-nav">Register</a>
+        <button id="logout-btn" class="btn-logout-nav" onclick="logout()">Logout</button>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <h1>Upcoming Basketball Tournaments</h1>
+        <p>Przeglądaj najnowsze wydarzenia i dołącz do gry!</p>
+    </section>
+
+    <div id="list" class="tournament-grid">
+    </div>
+
+    <div id="pagination" class="pagination-container"></div>
+</main>
+
+<footer class="footer-main">
+    Projekt zaliczeniowy 2026 • BasketLand • System Zarządzania Turniejami
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

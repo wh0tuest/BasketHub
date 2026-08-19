@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły turnieju - BasketHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">🏀 Basket<span>Hub</span></div>
+    <nav>
+        <span id="user-info" class="user-info-status"></span>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html" id="dashboard-link" class="nav-link-hidden">Dashboard</a>
+        <a href="login.html" id="login-btn" class="nav-link">Login</a>
+        <a href="register.html" id="register-btn" class="btn">Register</a>
+        <button id="logout-btn" onclick="logout()" class="btn-logout-nav">Logout</button>
+    </nav>
+</header>
+
+<main class="container">
+    <h1 id="title">Ładowanie turnieju...</h1>
+    <p id="info" class="tournament-meta"></p>
+
+    <div class="container">
+        <button id="show-edit-btn" class="btn-edit-tournament" onclick="toggleEditForm(true)" style="display: none;">
+            ✏️ Edytuj dane turnieju
+        </button>
+
+    </div>
+
+    <div id="edit-tournament-form" class="admin-panel edit-panel">
+        <h3 class="panel-title">📝 Edytuj Dane Turnieju</h3>
+
+        <div class="vertical-form">
+            <div class="form-group">
+                <label>Nazwa turnieju:</label>
+                <input type="text" id="edit-name" placeholder="Nazwa">
+            </div>
+
+            <div class="form-group">
+                <label>Lokalizacja:</label>
+                <input type="text" id="edit-location" placeholder="Lokalizacja">
+            </div>
+
+            <div class="form-group">
+                <label>Data turnieju:</label>
+                <input type="date" id="edit-date">
+            </div>
+
+            <div class="form-actions row">
+                <button class="btn-primary" onclick="saveTournamentEdit()">Zapisz zmiany</button>
+                <button class="btn-secondary" onclick="toggleEditForm(false)">Anuluj</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section id="admin-management-section" class="admin-panel">
+        <h3 class="panel-title">⚡ Panel Administratora: Wnioski</h3>
+        <ul id="admin-apps-list" class="admin-list"></ul>
+    </section>
+
+    <section id="user-status-section" class="status-panel">
+        <h3 class="gold-text">Twoje zgłoszenie:</h3>
+        <p id="my-app-status" class="status-text"></p>
+    </section>
+
+    <section class="details-section card">
+        <h3 class="gold-text">🛡️ Zatwierdzone Drużyny</h3>
+        <ul id="teams" class="team-list"></ul>
+    </section>
+
+    <hr class="separator">
+
+    <section id="application-section" class="card application-panel">
+        <h3>📝 Zgłoś swoją drużynę</h3>
+        <p>Wybierz jedną ze swoich drużyn, aby wziąć udział w turnieju:</p>
+        <div class="form-group row">
+            <select id="teams-select" class="flex-grow">
+                <option value="">-- Ładowanie Twoich drużyn --</option>
+            </select>
+            <button class="btn-primary" onclick="sendApplication()">Wyślij zgłoszenie</button>
+        </div>
+        <p class="helper-text">* Zgłoszenie musi zostać zatwierdzone przez admina.</p>
+    </section>
+
+    <section id="guest-msg" class="guest-panel">
+        <p>🔑 <a href="login.html" class="gold-link">Zaloguj się</a>, aby móc zgłosić swoją drużynę.</p>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

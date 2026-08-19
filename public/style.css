@@ -1,0 +1,272 @@
+/* --- 1. ZMIENNE I RESET --- */
+:root {
+    --bg: #0b0c10;
+    --card: #1f2833;
+    --gold: #ffd700;
+    --gold-dark: #b8860b;
+    --crimson: #c3073f;
+    --white: #ffffff;
+    --gray: #c5c6c7;
+    --dark-gray: #1a1a1a;
+    --red: #c3073f;
+    --shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.6;
+}
+
+/* --- 2. NAWIGACJA (NAVBAR) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #000;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.logo span { color: var(--gold); }
+
+.navbar nav { display: flex; align-items: center; gap: 20px; }
+
+.navbar a, .nav-link {
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.navbar a:hover, .gold-link:hover { color: var(--gold); }
+
+.user-info-status { font-weight: bold; color: var(--gold); }
+
+.nav-link-hidden { display: none; }
+
+/* --- 3. PRZYCISKI (SYSTEMOWE) --- */
+button, .btn, .btn-primary, .btn-secondary, .btn-details {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary, .btn-details {
+    background: var(--gold);
+    color: #000;
+}
+
+.btn-primary:hover, .btn-details:hover {
+    background: var(--gold-dark);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.btn-secondary, .btn-logout-nav {
+    background: transparent;
+    border: 1px solid var(--crimson);
+    color: var(--crimson);
+}
+
+.btn-secondary:hover, .btn-logout-nav:hover {
+    background: var(--crimson);
+    color: #fff;
+}
+
+.btn-edit-tournament {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+/* --- 4. UKŁADY I PANELE (WSPÓLNE) --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+.admin-panel, .team-creation-panel, .players-management-panel,
+.status-panel, .guest-panel, .card, .auth-box {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--gold);
+    box-shadow: var(--shadow);
+}
+
+.admin-panel { border-left-color: var(--crimson); }
+.admin-panel h3, .panel-title { color: var(--crimson); margin-top: 0; }
+h3, .gold-text { color: var(--gold); margin-top: 0; }
+
+/* --- 5. GRID I KARTY --- */
+.tournament-grid, .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+}
+
+.tournament-card {
+    background: var(--card);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    box-shadow: var(--shadow);
+}
+
+.tournament-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.badge {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--gold);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+/* --- 6. ELEMENTY KARTY --- */
+.btn-delete-admin {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 77, 77, 0.1);
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 0.3s;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.btn-delete-admin:hover {
+    background: #ff4d4d;
+    color: white;
+}
+
+.btn-details {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.tournament-card h3 {
+    margin: 10px 0;
+    font-size: 1.4rem;
+    padding-right: 30px;
+}
+
+.card-body p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- 7. FORMULARZE I LISTY --- */
+.form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+.form-group.row { flex-direction: row; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+input, select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: var(--dark-gray);
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus { border-color: var(--gold); }
+
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+.flex-grow { flex-grow: 1; }
+
+.player-item, .tournament-list li {
+    background: var(--dark-gray);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.player-counter {
+    font-weight: bold;
+    color: #000;
+    background: var(--gold);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* --- 8. PAGINACJA I STOPKA --- */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.pagination-container button {
+    background: var(--dark-gray);
+    border: 1px solid var(--gold);
+    color: #fff;
+}
+
+.footer-main {
+    text-align: center;
+    padding: 40px;
+    background: #000;
+    color: var(--gray);
+    margin-top: 60px;
+}
+
+/* --- 9. DODATKI --- */
+.helper-text { color: var(--gray); font-size: 0.85rem; margin-top: 5px; }
+.separator { margin: 30px 0; border: 0; border-top: 1px solid #444; }
+.gold-link { color: var(--gold); font-weight: bold; text-decoration: none; }
+.gold-link:hover { text-decoration: underline; }

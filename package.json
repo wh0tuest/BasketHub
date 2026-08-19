@@ -1,0 +1,23 @@
+{
+  "name": "protin",
+  "version": "1.0.0",
+  "description": "BasketHub - basketball tournament management web application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "setup": "node db/setup.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

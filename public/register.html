@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja - BasketHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">🏀 Basket<span>Hub</span></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html" class="btn">Zaloguj się</a>
+    </nav>
+</header>
+
+<main class="auth-box">
+    <h1>Utwórz konto</h1>
+
+    <div class="form-group">
+        <label for="email">Adres E-mail</label>
+        <input id="email" type="email" placeholder="przyklad@mail.com" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Hasło</label>
+        <input id="password" type="password" placeholder="Min. 4 znaki" required>
+    </div>
+
+    <button class="btn-primary" onclick="register()">Zarejestruj się</button>
+
+    <p id="msg" style="margin-top: 15px; font-weight: bold;"></p>
+
+    <p class="auth-footer">
+        Masz już konto? <a href="login.html">Zaloguj się tutaj</a>
+    </p>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
