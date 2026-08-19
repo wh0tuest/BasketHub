@@ -73,7 +73,7 @@ No separate database server is required. SQLite runs locally as a file-based dat
 ## Installation
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/wh0tuest/BasketHub.git
 cd BasketHub
 npm install
 npm run setup
